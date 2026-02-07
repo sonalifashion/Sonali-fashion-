@@ -12,7 +12,7 @@ body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   color: #4a1f2b;
-  background-color: #fff6f8;
+  background: #fff7f9;
   overflow-x: hidden;
 }
 
@@ -25,34 +25,38 @@ body {
 }
 .flower {
   position: absolute;
-  width: 80px;
-  opacity: 0.35;
-  animation: floatFlower linear infinite;
+  width: 70px;
+  opacity: 0.25;
+  animation: float linear infinite;
 }
-@keyframes floatFlower {
-  0% { transform: translateY(110vh) rotate(0deg); }
-  100% { transform: translateY(-120vh) rotate(360deg); }
+@keyframes float {
+  0% {
+    transform: translateY(110vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+  }
 }
 
-/* OVERLAY */
+/* SOFT OVERLAY */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.6);
   z-index: -1;
 }
 
 /* HEADER */
 header {
-  background: linear-gradient(135deg, #e8a3b2, #f4c6cf);
+  background: linear-gradient(135deg, #e8a3b2, #f6cbd4);
   padding: 40px 20px;
   text-align: center;
 }
 header h1 {
   margin: 0;
-  font-size: 42px;
-  letter-spacing: 3px;
+  font-size: 40px;
+  letter-spacing: 2px;
 }
 nav a {
   text-decoration: none;
@@ -63,7 +67,7 @@ nav a {
 
 /* SECTIONS */
 section {
-  padding: 70px 20px;
+  padding: 60px 20px;
   max-width: 1100px;
   margin: auto;
 }
@@ -75,7 +79,7 @@ h2 {
 /* PRODUCTS */
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
   gap: 30px;
 }
 .product-card {
@@ -85,18 +89,20 @@ h2 {
   text-align: center;
 }
 .product-card img {
-  max-width: 220px;
+  max-width: 200px;
   width: 100%;
+  margin-bottom: 15px;
 }
 button {
   background: #b76e79;
   color: white;
   border: none;
-  padding: 12px 28px;
+  padding: 12px 26px;
   border-radius: 30px;
   cursor: pointer;
-  margin-top: 15px;
-  font-size: 14px;
+}
+button:hover {
+  background: #a45c67;
 }
 
 /* CART */
@@ -106,7 +112,7 @@ button {
   right: 20px;
   background: #7a2f4f;
   color: white;
-  padding: 14px 20px;
+  padding: 14px 22px;
   border-radius: 30px;
   cursor: pointer;
   z-index: 1000;
@@ -119,18 +125,24 @@ button {
   width: 320px;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
   display: none;
   z-index: 1000;
 }
 #cart-items div {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
   font-size: 14px;
+}
+.remove {
+  color: red;
+  cursor: pointer;
 }
 
 /* FOOTER */
 footer {
-  background: linear-gradient(135deg, #e8a3b2, #f4c6cf);
+  background: linear-gradient(135deg, #e8a3b2, #f6cbd4);
   text-align: center;
   padding: 25px;
 }
@@ -139,10 +151,12 @@ footer {
 
 <body>
 
+<!-- FLOATING FLOWERS -->
 <div class="floating-flowers">
   <img src="flowers.png" class="flower" style="left:10%; animation-duration:30s;">
-  <img src="flowers.png" class="flower" style="left:40%; animation-duration:40s;">
-  <img src="flowers.png" class="flower" style="left:70%; animation-duration:35s;">
+  <img src="flowers.png" class="flower" style="left:35%; animation-duration:40s;">
+  <img src="flowers.png" class="flower" style="left:60%; animation-duration:35s;">
+  <img src="flowers.png" class="flower" style="left:80%; animation-duration:45s;">
 </div>
 
 <header>
@@ -158,31 +172,29 @@ footer {
 <h2>Our Bestsellers</h2>
 
 <div class="products">
+  <div class="product-card">
+    <img src="antiacne.jpg">
+    <h3>Anti-Acne Soap â€“ Rs.75</h3>
+    <button onclick="addToCart('Anti-Acne Soap',75)">Add to Cart</button>
+  </div>
 
-<div class="product-card">
-<img src="antiacne.jpg" alt="Anti Acne Soap">
-<h3>Anti-Acne Soap – Rs.75</h3>
-<button onclick="addToCart('Anti-Acne Soap',75)">Add to Cart</button>
-</div>
+  <div class="product-card">
+    <img src="SScreem.jpg">
+    <h3>Sunscreen â€“ Rs.300</h3>
+    <button onclick="addToCart('Sunscreen',300)">Add to Cart</button>
+  </div>
 
-<div class="product-card">
-<img src="SScreem.jpg" alt="Sunscreen">
-<h3>Sunscreen – Rs.300</h3>
-<button onclick="addToCart('Sunscreen',300)">Add to Cart</button>
-</div>
+  <div class="product-card">
+    <img src="antitan.jpg">
+    <h3>Anti-Tan Soap â€“ Rs.75</h3>
+    <button onclick="addToCart('Anti-Tan Soap',75)">Add to Cart</button>
+  </div>
 
-<div class="product-card">
-<img src="antitan.jpg" alt="Anti Tan Soap">
-<h3>Anti-Tan Soap – Rs.75</h3>
-<button onclick="addToCart('Anti-Tan Soap',75)">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<img src="Kesar.jpg" alt="Saffron Glow Cream">
-<h3>Saffron Glow Cream (25g) – Rs.550</h3>
-<button onclick="addToCart('Saffron Glow Cream (25g)',550)">Add to Cart</button>
-</div>
-
+  <div class="product-card">
+    <img src="Kesar.jpg">
+    <h3>Saffron Glow Cream (25g) â€“ Rs.550</h3>
+    <button onclick="addToCart('Saffron Glow Cream (25g)',550)">Add to Cart</button>
+  </div>
 </div>
 </section>
 
@@ -194,16 +206,16 @@ Phone: +91 9156868475
 </p>
 </section>
 
-<footer>© SONALI FASHIONS</footer>
+<footer>Â© SONALI FASHIONS</footer>
 
 <div id="cart-btn" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</div>
 
 <div id="cart-modal">
 <h3>Your Cart</h3>
 <div id="cart-items"></div>
-<p><strong>Total Rs.<span id="cart-total">0</span></strong></p>
-<button onclick="checkout()">Checkout on WhatsApp</button>
-<button onclick="toggleCart()" style="background:#ddd;color:#333;margin-top:10px">Close</button>
+<p><strong>Total Rs. <span id="cart-total">0</span></strong></p>
+<button onclick="checkout()">Checkout on WhatsApp</button><br><br>
+<button onclick="toggleCart()" style="background:#ddd;color:#333">Close</button>
 </div>
 
 <script>
@@ -219,15 +231,17 @@ function updateCart() {
   let items = document.getElementById("cart-items");
   let total = 0;
   items.innerHTML = "";
+
   cart.forEach((item, i) => {
     total += item.price;
     items.innerHTML += `
       <div>
-        ${item.name} – Rs.${item.price}
-        <span style="color:red;cursor:pointer" onclick="removeItem(${i})"> </span>
+        <span>${item.name} â€“ Rs.${item.price}</span>
+        <span class="remove" onclick="removeItem(${i})">âœ–</span>
       </div>
     `;
   });
+
   document.getElementById("cart-total").innerText = total;
 }
 
@@ -237,16 +251,14 @@ function removeItem(i) {
 }
 
 function toggleCart() {
-  let c = document.getElementById("cart-modal");
-  c.style.display = c.style.display === "block" ? "none" : "block";
+  const box = document.getElementById("cart-modal");
+  box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
 function checkout() {
   let msg = "Hello, I want to order:\n";
-  cart.forEach(p => {
-    msg += `• ${p.name} – Rs.${p.price}\n`;
-  });
-  window.open("https://wa.me/9156868475?text=" + encodeURIComponent(msg), "_blank");
+  cart.forEach(p => msg += `â€¢ ${p.name} â€“ Rs.${p.price}\n`);
+  window.open("https://wa.me/9156868475?text=" + encodeURIComponent(msg));
 }
 </script>
 
